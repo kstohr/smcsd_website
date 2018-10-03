@@ -1,7 +1,9 @@
 
 # coding: utf-8
+import os
 import pandas as pd
 from collections import deque
+
 
 def build_html(df, link_type):
     items = []
@@ -25,7 +27,8 @@ def build_html(df, link_type):
 if __name__ == "__main__":
 
     # load data
-    data = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRL_OqBRKS_FDjqoVvOfMnL5sRjuPRW0u9KAGt1HSAc8mLWSF6QrGxg67ERcVkOY9InrG9slMkSnGnC/pub?output=csv")
+    NEWS_GOOGLE_SHEET = os.environ.get('NEWS_GOOGLE_SHEET')
+    data = pd.read_csv(NEWS_GOOGLE_SHEET)
     
     if data.empty == False: 
         print('Data loaded...')
