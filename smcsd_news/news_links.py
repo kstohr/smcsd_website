@@ -38,13 +38,12 @@ if __name__ == "__main__":
 
     l_lists = deque([])
     for l_type in list(pd.unique(data['type']).ravel()):
-        print(l_type)
         l_html = build_html(data, l_type)
         l_lists.append(l_html) 
 
     html = ''.join(l_lists)
     
-    filepath = "./smcsd_news/news_links.html"
+    filepath = "news_links.html"
     with open(filepath, "w") as html_file:
         html_file.write(html)
         print('New html file written..')
