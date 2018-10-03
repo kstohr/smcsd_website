@@ -1,0 +1,112 @@
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  font-size: 100%;
+  font-family: "Open Sans", sans-serif;
+  background: #ffffff;
+}
+
+h3 {
+  margin: 3em 0 0 0;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: "Open Sans", sans-serif;
+  color: #2D721D
+}
+
+a:link, a:visited {
+    background-color: #ffffff;
+    color: #2d721d;
+    padding: 7px 13px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px #2d721d solid;
+    margin-top: 5px;
+}
+
+a:hover, a:active {
+    background-color: #2d721d;
+    color: #ffffff;
+}
+
+.timeline {
+  list-style: none;
+}
+.timeline > li {
+  margin-bottom: 60px;
+}
+
+/* for Desktop */
+@media ( min-width : 640px ){
+  .timeline > li {
+    overflow: hidden;
+    margin: 0;
+    position: relative;
+  }
+  .timeline-date {
+    color: #2D721D;
+    width: 140px;
+    float: left;
+    font-size: 1.5em;
+    margin: 3em 0 0 0;
+    padding-right: 10px;
+    text-transform: uppercase;
+  }
+  .timeline-content {
+    width: 60%;
+    float: left;
+    border-left: 5px #2D721D solid;
+    padding-left: 30px;
+  }
+  .timeline-content:before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: #ffffff;
+    position: absolute;
+    left: 140px;
+    top: 27px;
+    border: 5px #2d721d solid;
+    border-radius: 50%;
+    margin: 3em 0 0 0;
+  }
+}
+/* for Mobile */
+@media screen and (max-device-width: 639px) {
+
+  h3 {
+    margin: 1em 0 0 0;
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: "Open Sans", sans-serif;
+    color: #2D721D
+ }
+
+  .timeline > li {
+    overflow: hidden;
+    margin: 0;
+    position: relative;
+  }
+  .timeline-date {
+    color: #2D721D;
+    width: 140px;
+    float: left;
+    font-size: 1.2em;
+    margin: 3em 0 0 0;
+    padding-left: 1em;
+    text-transform: uppercase;
+  }
+  .timeline-content {
+    width: 65%;
+    float: left;
+    border-left: 5px #2D721D solid;
+    padding-left: 20px;
+  }
+}
