@@ -1,15 +1,7 @@
 
 # coding: utf-8
 import pandas as pd
-
-# load data
-data = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRL_OqBRKS_FDjqoVvOfMnL5sRjuPRW0u9KAGt1HSAc8mLWSF6QrGxg67ERcVkOY9InrG9slMkSnGnC/pub?output=csv")
-
-#clean data
-data = data.sort_values('type', ascending=False).reset_index()
-
-#list items
-items = []
+from collections import deque
 
 def build_html(df, link_type):
     items = []
@@ -30,12 +22,31 @@ def build_html(df, link_type):
     html = html.replace('nan,', '')
     return html
 
-l_lists = []
-for l_type in list(set(data['type'])):
-    l_html = build_html(data, l_type)
-    l_lists.append(l_html) 
+if __name__ == "__main__":
 
-html = ''.join(l_lists)
-                                                            
-with open("news_links.html", "w") as html_file:
-                  html_file.write(html)
+    # load data
+    data = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRL_OqBRKS_FDjqoVvOfMnL5sRjuPRW0u9KAGt1HSAc8mLWSF6QrGxg67ERcVkOY9InrG9slMkSnGnC/pub?output=csv")
+    
+    if data.empty == False: 
+        print('Data loaded...')
+    
+    #clean data
+    data['date'] = pd.to_datetime(data['date'])
+    
+    data = data.sort_values(['order', 'date'], ascending=False).reset_index()
+    data['date'] = data['date'].dt.strftime('%B %d, %Y')
+
+    l_lists = deque([])
+    for l_type in list(pd.unique(data['type']).ravel()):
+        print(l_type)
+        l_html = build_html(data, l_type)
+        l_lists.append(l_html) 
+
+    html = ''.join(l_lists)
+    
+    filepath = "./smcsd_news/news_links.html"
+    with open(filepath, "w") as html_file:
+        html_file.write(html)
+        print('New html file written..')
+        
+    print("File update complete: {}".format(filepath))

@@ -1,0 +1,24 @@
+# Local development
+*.env
+*.dev
+*.idea/
+.DS_Store
+*.DS_Store
+__pycache__
+
+#test_files
+react-ui/public/media/sausalito_nov2016_5min_conv/
+
+# Docker
+Dockerfile
+docker-compose.yml
+
+# Media Files
+*.mp4
+*.wav
+*.flac
+*.ogg
+*.mp3
+
+# Log files
+*.log
